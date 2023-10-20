@@ -3,7 +3,14 @@ A simple tool to add a clickable table of contents to a PDF document. The intend
 into a text file, edit it to the correct format, and write it to the PDF.
 
 # Requirements
-`pdftk` in your PATH.
+Python 3.x. `pdftk` in your PATH.
+
+# Usage
+If you want to write a table of contents from `contents.txt` to `book.pdf` with offset 10:
+```
+python3 contents.py book.pdf contents.txt --offset 10
+```
+The updated book will be `final.pdf`.
 
 # Table of contents file format
 The textual table of contents (copied from a real book) might look like this:
