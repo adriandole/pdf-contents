@@ -2,6 +2,9 @@
 A simple tool to add a clickable table of contents to a PDF document. The intended use case is to copy-paste the existing table of contents
 into a text file, edit it to the correct format, and write it to the PDF.
 
+# Requirements
+`pdftk` in your PATH.
+
 # Table of contents file format
 The textual table of contents (copied from a real book) might look like this:
 ```
