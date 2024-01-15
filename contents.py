@@ -39,8 +39,7 @@ class Metadata:
             del self._lines[self._start:self._end+1]
 
     def insert_bookmarks(self, bookmarks: List[Bookmark]):
-        bookmarks.sort(key=lambda b: b.page, reverse=True)
-        for b in bookmarks:
+        for b in reversed(bookmarks):
             self._lines.insert(self._start, f'BookmarkPageNumber: {b.page}\n')
             self._lines.insert(self._start, f'BookmarkLevel: {b.level}\n')
             self._lines.insert(self._start, f'BookmarkTitle: {b.title}\n')
