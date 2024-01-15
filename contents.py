@@ -49,7 +49,7 @@ def parse_bookmarks(path, offset) -> List[Bookmark]:
         b = Bookmark('', 0, 0)
         b.level = (len(l) - len(l.lstrip())) // 4 + 1
         ls = l.rsplit(maxsplit=1)
-        b.page = int(ls[1]) + offset - 1
+        b.page = int(ls[1]) + offset
         b.title = ls[0].strip()
         bookmarks.append(b)
     return bookmarks
