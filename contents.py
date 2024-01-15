@@ -20,16 +20,23 @@ class Metadata:
             f.writelines(self._lines)
 
     def locate_bookmarks(self):
+        page_num_i = -1
         for i, l in enumerate(self._lines):
             if self._start == -1 and l.startswith('BookmarkBegin'):
                 self._start = i
             if l.startswith('BookmarkPageNumber'):
                 self._end = i
+            if page_num_i == -1 and l.startswith('NumberOfPages'):
+                page_num_i = i
+        if self._start == -1:
+            self._start = page_num_i + 1
+            self._end = -1
         
     def erase_bookmarks(self):
         if self._start == -1:
             self.locate_bookmarks()
-        del self._lines[self._start:self._end+1]
+        if self._end != -1:
+            del self._lines[self._start:self._end+1]
 
     def insert_bookmarks(self, bookmarks: List[Bookmark]):
         bookmarks.sort(key=lambda b: b.page, reverse=True)
